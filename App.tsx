@@ -15,7 +15,7 @@ import { LanguageProvider } from './context/LanguageContext';
 const App: React.FC = () => {
   return (
     <LanguageProvider>
-      <main className="bg-brand-black min-h-screen text-white selection:bg-brand-neon selection:text-black">
+      <main className="bg-brand-black min-h-screen text-white selection:bg-brand-titanium selection:text-black">
         <Navbar />
         <Hero />
         <TechMarquee />

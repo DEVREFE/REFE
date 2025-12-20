@@ -8,9 +8,9 @@ const Footer: React.FC = () => {
   return (
     <footer id="footer" className="bg-[#020202] pt-32 pb-12 px-6 relative overflow-hidden border-t border-white/5">
       
-      {/* Background Ambience */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-brand-neon/50 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[100px] bg-brand-neon/5 blur-[80px]" />
+      {/* Background Ambience - Silver/White */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[100px] bg-white/5 blur-[80px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         
@@ -22,13 +22,13 @@ const Footer: React.FC = () => {
             </div>
 
             <h2 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl text-white tracking-tighter leading-none mb-12">
-                {t.footer.title} <br /> <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-800">{t.footer.title_highlight}</span>
+                {t.footer.title} <br /> <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">{t.footer.title_highlight}</span>
             </h2>
 
             <div className="flex flex-col md:flex-row gap-6">
                 <a 
                     href="mailto:hello@refe.studio" 
-                    className="group relative flex items-center gap-4 bg-brand-neon text-black px-10 py-5 rounded-full font-bold text-lg hover:bg-white transition-colors duration-300 shadow-[0_0_30px_rgba(217,255,0,0.3)] hover:shadow-[0_0_50px_rgba(255,255,255,0.3)]"
+                    className="group relative flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors duration-300 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(255,255,255,0.3)]"
                 >
                     <Mail size={20} />
                     <span>hello@refe.studio</span>
@@ -59,10 +59,10 @@ const Footer: React.FC = () => {
             <div>
                 <h4 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-6">{t.footer.socials}</h4>
                 <ul className="space-y-4">
-                    <li><a href="#" className="text-gray-400 hover:text-brand-neon transition-colors">LinkedIn</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-brand-neon transition-colors">Instagram</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-brand-neon transition-colors">Twitter / X</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-brand-neon transition-colors">Dribbble</a></li>
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Instagram</a></li>
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter / X</a></li>
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Dribbble</a></li>
                 </ul>
             </div>
             <div>

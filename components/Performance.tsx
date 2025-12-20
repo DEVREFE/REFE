@@ -12,7 +12,7 @@ const MetricItem = ({ label, value, growth, delay }: any) => (
     >
         <div className="flex flex-col">
             <span className="text-xs font-mono text-gray-500 uppercase tracking-wide mb-1">{label}</span>
-            <span className="text-2xl font-display font-medium text-white group-hover:text-brand-neon transition-colors">{value}</span>
+            <span className="text-2xl font-display font-medium text-white group-hover:text-brand-titanium transition-colors">{value}</span>
         </div>
         <div className="flex items-center gap-1 text-green-400 bg-green-900/20 px-2 py-1 rounded-md text-xs font-mono">
             <ArrowUpRight size={12} />
@@ -38,8 +38,8 @@ const Performance: React.FC = () => {
                     viewport={{ once: true }}
                 >
                     <div className="flex items-center gap-3 mb-6">
-                        <div className="p-2 bg-brand-neon/10 rounded-lg">
-                             <TrendingUp size={20} className="text-brand-neon" />
+                        <div className="p-2 bg-brand-titanium/10 rounded-lg">
+                             <TrendingUp size={20} className="text-brand-titanium" />
                         </div>
                         <span className="font-display font-medium text-white">{t.performance.label}</span>
                     </div>
@@ -55,11 +55,11 @@ const Performance: React.FC = () => {
 
                     <ul className="space-y-4">
                         <li className="flex items-start gap-3">
-                            <span className="w-1.5 h-1.5 mt-2 rounded-full bg-brand-neon" />
+                            <span className="w-1.5 h-1.5 mt-2 rounded-full bg-brand-titanium" />
                             <span className="text-gray-300 font-light">{t.performance.points[0]}</span>
                         </li>
                         <li className="flex items-start gap-3">
-                            <span className="w-1.5 h-1.5 mt-2 rounded-full bg-brand-neon" />
+                            <span className="w-1.5 h-1.5 mt-2 rounded-full bg-brand-titanium" />
                             <span className="text-gray-300 font-light">{t.performance.points[1]}</span>
                         </li>
                     </ul>
@@ -69,7 +69,7 @@ const Performance: React.FC = () => {
             {/* Dashboard Visual - Fintech Style */}
             <div className="relative">
                 {/* Background Glow */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-brand-neon/5 to-blue-500/5 blur-[80px] rounded-full pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-brand-titanium/5 to-blue-500/5 blur-[80px] rounded-full pointer-events-none" />
 
                 <div className="glass-panel rounded-[2rem] p-1 border border-white/10 relative overflow-hidden shadow-2xl">
                     <div className="bg-[#050505]/80 backdrop-blur-md rounded-[1.8rem] p-6 md:p-8">
@@ -77,7 +77,7 @@ const Performance: React.FC = () => {
                         {/* Header */}
                         <div className="flex justify-between items-center mb-8">
                             <div className="flex gap-2 items-center">
-                                <div className="w-3 h-3 rounded-full bg-brand-neon animate-pulse" />
+                                <div className="w-3 h-3 rounded-full bg-brand-titanium animate-pulse" />
                                 <span className="text-xs font-mono text-gray-400 uppercase tracking-widest">{t.performance.chart.label}</span>
                             </div>
                             <span className="text-xs font-mono text-gray-600">{t.performance.chart.sub}</span>
@@ -97,8 +97,8 @@ const Performance: React.FC = () => {
                             <svg className="absolute inset-0 w-full h-full overflow-visible">
                                 <defs>
                                     <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
-                                        <stop offset="0%" stopColor="#D9FF00" stopOpacity="0.2" />
-                                        <stop offset="100%" stopColor="#D9FF00" stopOpacity="0" />
+                                        <stop offset="0%" stopColor="#E4E4E7" stopOpacity="0.2" />
+                                        <stop offset="100%" stopColor="#E4E4E7" stopOpacity="0" />
                                     </linearGradient>
                                     <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
                                         <feGaussianBlur stdDeviation="4" result="coloredBlur" />
@@ -111,7 +111,7 @@ const Performance: React.FC = () => {
                                 <motion.path
                                     d="M0,200 C50,200 80,150 150,160 C220,170 280,80 350,100 C420,120 480,40 600,20"
                                     fill="none"
-                                    stroke="#D9FF00"
+                                    stroke="#E4E4E7"
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     filter="url(#glow)"

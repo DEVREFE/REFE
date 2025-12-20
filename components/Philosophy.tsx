@@ -15,27 +15,27 @@ const DNAItem = ({ icon: Icon, title, desc, index, large = false, mouseX, mouseY
           ${large ? 'md:col-span-2 md:row-span-2 bg-[#0A0A0A]' : 'bg-[#050505]'}
       `}
     >
-        {/* Spotlight Effect Layer */}
+        {/* Spotlight Effect Layer - WHITE/SILVER */}
         <motion.div
             className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
             style={{
                 background: useMotionTemplate`
                     radial-gradient(
                     650px circle at ${mouseX}px ${mouseY}px,
-                    rgba(217, 255, 0, 0.15),
+                    rgba(255, 255, 255, 0.08),
                     transparent 80%
                     )
                 `,
             }}
         />
-        {/* Border Spotlight */}
+        {/* Border Spotlight - WHITE */}
         <motion.div
              className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
              style={{
                  background: useMotionTemplate`
                      radial-gradient(
                      400px circle at ${mouseX}px ${mouseY}px,
-                     rgba(217, 255, 0, 0.4),
+                     rgba(255, 255, 255, 0.3),
                      transparent 40%
                      )
                  `,
@@ -52,10 +52,10 @@ const DNAItem = ({ icon: Icon, title, desc, index, large = false, mouseX, mouseY
        
        <div className="relative z-10 flex justify-between items-start mb-8 pointer-events-none">
           <div className="flex flex-col gap-2">
-              <span className="font-mono text-xs text-gray-600 group-hover:text-brand-neon transition-colors">
+              <span className="font-mono text-xs text-gray-600 group-hover:text-white transition-colors">
                   0{index} — PRINCIPLE
               </span>
-              <div className={`p-2 w-fit rounded-lg ${large ? 'text-brand-neon bg-brand-neon/10' : 'text-gray-400 bg-white/5'}`}>
+              <div className={`p-2 w-fit rounded-lg ${large ? 'text-white bg-white/10' : 'text-gray-400 bg-white/5'}`}>
                   <Icon size={large ? 32 : 24} />
               </div>
           </div>
@@ -94,8 +94,8 @@ const Philosophy: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-white/5 pb-8">
              <div className="max-w-2xl">
                 <div className="flex items-center gap-2 mb-4">
-                    <span className="w-2 h-2 rounded-full bg-brand-neon animate-pulse"></span>
-                    <span className="font-mono text-xs text-brand-neon uppercase tracking-widest">{t.philosophy.eyebrow}</span>
+                    <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                    <span className="font-mono text-xs text-white uppercase tracking-widest">{t.philosophy.eyebrow}</span>
                 </div>
                 <h2 className="font-display font-semibold text-4xl md:text-6xl text-white tracking-tight leading-[0.9]">
                     {t.philosophy.title_main} <br/> <span className="text-gray-600">{t.philosophy.title_sub}</span>

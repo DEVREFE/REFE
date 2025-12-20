@@ -56,9 +56,9 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* Reading Progress Bar */}
+      {/* Reading Progress Bar - White */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-brand-neon z-[60] origin-left"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-white z-[60] origin-left"
         style={{ scaleX }}
       />
 
@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
         <div className="pointer-events-auto bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 rounded-full px-2 py-2 flex items-center gap-1 shadow-2xl ring-1 ring-white/5">
           
           <a href="#" className="px-4 py-2 font-display font-bold text-white tracking-tight flex items-center gap-1 group">
-            REFE<span className="text-brand-neon group-hover:animate-pulse">.</span>
+            REFE<span className="text-white group-hover:animate-pulse">.</span>
           </a>
 
           <div className="h-6 w-[1px] bg-white/10 mx-2" />
@@ -97,18 +97,18 @@ const Navbar: React.FC = () => {
             onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
             className="px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono font-bold hover:bg-white/10 transition-colors flex items-center gap-2 mr-2"
           >
-             <span className={language === 'en' ? 'text-brand-neon' : 'text-gray-500'}>EN</span>
+             <span className={language === 'en' ? 'text-white' : 'text-gray-500'}>EN</span>
              <span className="text-gray-600">/</span>
-             <span className={language === 'es' ? 'text-brand-neon' : 'text-gray-500'}>ES</span>
+             <span className={language === 'es' ? 'text-white' : 'text-gray-500'}>ES</span>
           </button>
 
           <MagneticWrapper>
             <a
                 href="#footer"
-                className="relative overflow-hidden bg-brand-neon text-black px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-[0_0_20px_rgba(217,255,0,0.3)] hover:shadow-[0_0_30px_rgba(217,255,0,0.5)] group"
+                className="relative overflow-hidden bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] group"
             >
                 {/* Shine effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-10" />
+                <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-black/10 to-transparent z-10" />
                 
                 <MessageSquare size={16} className="relative z-20" />
                 <span className="relative z-20">{t.nav.cta}</span>
@@ -120,7 +120,7 @@ const Navbar: React.FC = () => {
       {/* Mobile Bar */}
       <nav className="fixed top-0 left-0 right-0 z-50 md:hidden bg-[#050505]/80 backdrop-blur-md border-b border-white/5 px-6 py-4 flex justify-between items-center">
         <a href="#" className="font-display font-bold text-xl text-white">
-          REFE<span className="text-brand-neon">.</span>
+          REFE<span className="text-white">.</span>
         </a>
         <div className="flex items-center gap-4">
             <button 
@@ -166,9 +166,9 @@ const Navbar: React.FC = () => {
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="font-display text-5xl font-bold text-white flex items-center gap-4 active:text-brand-neon"
+                  className="font-display text-5xl font-bold text-white flex items-center gap-4 active:text-gray-400"
                 >
-                  <item.icon size={32} className="text-brand-neon" />
+                  <item.icon size={32} className="text-white" />
                   {item.label}
                 </motion.a>
               ))}
@@ -179,7 +179,7 @@ const Navbar: React.FC = () => {
                   transition={{ delay: 0.4 }}
                   href="#footer"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="font-display text-5xl font-bold text-brand-neon flex items-center gap-4 mt-4"
+                  className="font-display text-5xl font-bold text-white flex items-center gap-4 mt-4"
                 >
                   <MessageSquare size={32} />
                   {t.nav.cta}

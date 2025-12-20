@@ -44,13 +44,13 @@ const Process: React.FC = () => {
 
   return (
     <section className="py-32 bg-[#020202] relative">
-       {/* Background Grid */}
-       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+       {/* Background Grid - Clean */}
+       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
        <div className="max-w-6xl mx-auto px-6 relative z-10">
           
           <div className="text-center mb-20">
-             <span className="font-mono text-xs text-brand-neon uppercase tracking-widest mb-4 block">{t.process.eyebrow}</span>
+             <span className="font-mono text-xs text-white uppercase tracking-widest mb-4 block">{t.process.eyebrow}</span>
              <h2 className="font-display text-4xl md:text-5xl text-white font-semibold">
                 {t.process.title_main} <span className="text-gray-600">{t.process.title_sub}</span>
              </h2>
@@ -67,7 +67,7 @@ const Process: React.FC = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5 }}
-                        className="absolute inset-0 bg-gradient-to-b from-brand-neon/5 to-transparent opacity-50"
+                        className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-50"
                     />
 
                     <div className="relative z-10">
@@ -80,7 +80,7 @@ const Process: React.FC = () => {
                                     exit={{ opacity: 0, y: -20 }}
                                     transition={{ duration: 0.4 }}
                                 >
-                                    <div className="w-24 h-24 rounded-2xl bg-brand-neon text-black flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(217,255,0,0.3)]">
+                                    <div className="w-24 h-24 rounded-2xl bg-white text-black flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
                                         <step.icon size={40} strokeWidth={1.5} />
                                     </div>
                                     <h3 className="text-3xl font-display text-white mb-2">{step.title}</h3>
@@ -114,19 +114,19 @@ const Process: React.FC = () => {
                     >
                         {/* Node Indicator */}
                         <motion.div 
-                            className={`absolute left-[21px] top-10 w-3 h-3 rounded-full border border-black z-10 transition-colors duration-300 ${idx === activeStep ? 'bg-brand-neon' : 'bg-gray-800'}`}
+                            className={`absolute left-[21px] top-10 w-3 h-3 rounded-full border border-black z-10 transition-colors duration-300 ${idx === activeStep ? 'bg-white' : 'bg-gray-800'}`}
                         >
                             {idx === activeStep && (
                                 <motion.div 
                                     layoutId="activeGlow"
-                                    className="absolute inset-0 -m-1 rounded-full bg-brand-neon/30 blur-sm"
+                                    className="absolute inset-0 -m-1 rounded-full bg-white/30 blur-sm"
                                     transition={{ duration: 0.3 }}
                                 />
                             )}
                         </motion.div>
 
                         <div className="flex flex-col">
-                            <span className="font-mono text-xs text-brand-neon mb-1">{step.id}</span>
+                            <span className="font-mono text-xs text-white mb-1">{step.id}</span>
                             <h3 className="text-xl font-display font-medium text-white mb-1">{step.title}</h3>
                             <p className="text-sm text-gray-400 mb-4">{step.subtitle}</p>
                             

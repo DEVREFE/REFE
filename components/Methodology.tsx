@@ -20,8 +20,8 @@ const Methodology: React.FC = () => {
         <div className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-2xl">
                 <div className="flex items-center gap-3 mb-4">
-                     <span className="w-8 h-[1px] bg-brand-neon/50"></span>
-                     <span className="font-mono text-brand-neon text-xs uppercase tracking-widest">{t.methodology.eyebrow}</span>
+                     <span className="w-8 h-[1px] bg-brand-titanium/50"></span>
+                     <span className="font-mono text-brand-titanium text-xs uppercase tracking-widest">{t.methodology.eyebrow}</span>
                 </div>
                 <h2 className="font-display font-semibold text-5xl md:text-6xl text-white tracking-tight leading-tight">
                     {t.methodology.title_main} <br/> <span className="text-gray-600">{t.methodology.title_sub}</span>
@@ -49,7 +49,7 @@ const Methodology: React.FC = () => {
                 {/* Sliding Background */}
                 <motion.div 
                     layoutId="toggle-bg"
-                    className="absolute top-1 bottom-1 bg-brand-neon rounded-full z-0"
+                    className="absolute top-1 bottom-1 bg-brand-titanium rounded-full z-0"
                     initial={false}
                     animate={{
                         left: mode === MethodologyMode.EXECUTE ? '4px' : '50%',
@@ -80,7 +80,7 @@ const Methodology: React.FC = () => {
 
                          <div className="relative z-10">
                             <div className="flex items-center gap-4 mb-8">
-                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${mode === MethodologyMode.EXECUTE ? 'bg-white text-black' : 'bg-brand-neon text-black'}`}>
+                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${mode === MethodologyMode.EXECUTE ? 'bg-white text-black' : 'bg-brand-titanium text-black'}`}>
                                     {mode === MethodologyMode.EXECUTE ? <Cpu size={24} /> : <Sparkles size={24} />}
                                 </div>
                                 <div className="h-[1px] flex-grow bg-white/10" />
@@ -142,7 +142,7 @@ const Methodology: React.FC = () => {
 
                         {/* Evolve Part */}
                         <motion.div 
-                            className="bg-brand-neon h-full flex items-center justify-center relative hover:bg-brand-neon/90 transition-colors cursor-help"
+                            className="bg-brand-titanium h-full flex items-center justify-center relative hover:bg-brand-titanium/90 transition-colors cursor-help"
                             initial={{ width: "20%" }}
                             animate={{ width: mode === MethodologyMode.EVOLVE ? "35%" : "20%" }}
                             transition={{ duration: 0.5, ease: "easeInOut" }}

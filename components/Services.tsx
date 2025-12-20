@@ -75,7 +75,7 @@ const Services: React.FC = () => {
     <section id="services" className="py-24 md:py-32 bg-[#020202] relative overflow-hidden border-b border-white/5">
       
       {/* Background Ambience (Aurora) */}
-      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-brand-neon/5 blur-[120px] rounded-full animate-aurora pointer-events-none mix-blend-screen" />
+      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-brand-titanium/5 blur-[120px] rounded-full animate-aurora pointer-events-none mix-blend-screen" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-500/5 blur-[100px] rounded-full animate-aurora-reverse pointer-events-none mix-blend-screen" />
 
       {/* Subtle Background Mesh */}
@@ -87,8 +87,8 @@ const Services: React.FC = () => {
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="max-w-3xl">
                 <div className="flex items-center gap-3 mb-4">
-                    <Terminal size={16} className="text-brand-neon" />
-                    <span className="font-mono text-brand-neon text-xs uppercase tracking-widest">{t.services.eyebrow}</span>
+                    <Terminal size={16} className="text-brand-titanium" />
+                    <span className="font-mono text-brand-titanium text-xs uppercase tracking-widest">{t.services.eyebrow}</span>
                 </div>
                 <h2 className="font-display font-semibold text-5xl md:text-7xl text-white tracking-tight leading-none">
                     {t.services.title_main} <br/> <span className="text-gray-700">{t.services.title_sub}</span>
@@ -97,7 +97,7 @@ const Services: React.FC = () => {
             {/* Desktop Only Instructions */}
             <div className="hidden md:block text-right">
                 <div className="flex items-center gap-2 justify-end text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">
-                    <div className="w-2 h-2 rounded-full bg-brand-neon animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-brand-titanium animate-pulse" />
                     {t.services.status}
                 </div>
                 <p className="text-gray-600 text-sm max-w-xs">
@@ -133,12 +133,12 @@ const Services: React.FC = () => {
                                     initial={{ width: "0%" }}
                                     animate={{ width: "100%" }}
                                     transition={{ duration: CYCLE_DURATION / 1000, ease: "linear" }}
-                                    className="absolute bottom-0 left-0 h-[2px] bg-brand-neon z-10"
+                                    className="absolute bottom-0 left-0 h-[2px] bg-brand-titanium z-10"
                                 />
                             )}
 
                             <div className="flex items-center justify-between mb-2">
-                                <span className={`font-mono text-xs uppercase tracking-widest transition-colors ${isActive ? 'text-brand-neon' : 'text-gray-500'}`}>
+                                <span className={`font-mono text-xs uppercase tracking-widest transition-colors ${isActive ? 'text-brand-titanium' : 'text-gray-500'}`}>
                                     0{idx + 1}
                                 </span>
                                 <phase.icon size={20} className={isActive ? 'text-white' : 'text-gray-600'} />
@@ -158,7 +158,7 @@ const Services: React.FC = () => {
                                         exit={{ opacity: 0, x: -10 }}
                                         className="absolute right-6 top-1/2 -translate-y-1/2"
                                     >
-                                        <ArrowRight className="text-brand-neon" size={20} />
+                                        <ArrowRight className="text-brand-titanium" size={20} />
                                     </motion.div>
                                 )}
                             </AnimatePresence>
@@ -171,7 +171,7 @@ const Services: React.FC = () => {
             <div className="col-span-8">
                 <div className="relative h-full bg-[#080808]/80 backdrop-blur-sm border border-white/10 rounded-3xl p-10 overflow-hidden flex flex-col">
                      {/* Ambient Glow */}
-                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-neon/5 blur-[120px] rounded-full pointer-events-none" />
+                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-titanium/5 blur-[120px] rounded-full pointer-events-none" />
 
                      <AnimatePresence mode="wait">
                         <motion.div
@@ -185,7 +185,7 @@ const Services: React.FC = () => {
                             {/* Header */}
                             <div className="flex gap-6 mb-10 pb-8 border-b border-white/5">
                                 <div className="p-4 bg-white/5 rounded-2xl border border-white/10 h-fit">
-                                     {React.createElement(ecosystem[activePhase].icon, { size: 32, className: "text-brand-neon" })}
+                                     {React.createElement(ecosystem[activePhase].icon, { size: 32, className: "text-brand-titanium" })}
                                 </div>
                                 <div>
                                     <h3 className="text-3xl font-display text-white mb-3">{ecosystem[activePhase].subtitle}</h3>
@@ -203,7 +203,7 @@ const Services: React.FC = () => {
                                         transition={{ delay: i * 0.1 }}
                                         className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/20 transition-colors flex items-start gap-3 group"
                                     >
-                                        <div className="mt-1 text-gray-600 group-hover:text-brand-neon transition-colors">
+                                        <div className="mt-1 text-gray-600 group-hover:text-brand-titanium transition-colors">
                                             <cap.icon size={16} />
                                         </div>
                                         <div>
@@ -216,8 +216,8 @@ const Services: React.FC = () => {
 
                             {/* Footer Outcome */}
                             <div className="mt-auto pt-4 flex items-center gap-3">
-                                <div className="bg-brand-neon/10 p-2 rounded-full">
-                                    <CheckCircle2 size={16} className="text-brand-neon" />
+                                <div className="bg-brand-titanium/10 p-2 rounded-full">
+                                    <CheckCircle2 size={16} className="text-brand-titanium" />
                                 </div>
                                 <span className="text-sm text-gray-300 font-mono">
                                     <span className="text-gray-600 uppercase tracking-widest mr-2">{t.services.target_outcome}</span> 
@@ -247,7 +247,7 @@ const Services: React.FC = () => {
                             className="w-full flex items-center justify-between p-6 text-left"
                         >
                             <div className="flex items-center gap-4">
-                                <div className={`p-2 rounded-lg ${isActive ? 'bg-brand-neon/10 text-brand-neon' : 'bg-white/5 text-gray-500'}`}>
+                                <div className={`p-2 rounded-lg ${isActive ? 'bg-brand-titanium/10 text-brand-titanium' : 'bg-white/5 text-gray-500'}`}>
                                     <phase.icon size={20} />
                                 </div>
                                 <div>
@@ -255,7 +255,7 @@ const Services: React.FC = () => {
                                     <h3 className={`font-display text-xl ${isActive ? 'text-white' : 'text-gray-400'}`}>{phase.subtitle}</h3>
                                 </div>
                             </div>
-                            <ChevronDown size={20} className={`transition-transform duration-300 text-gray-500 ${isActive ? 'rotate-180 text-brand-neon' : ''}`} />
+                            <ChevronDown size={20} className={`transition-transform duration-300 text-gray-500 ${isActive ? 'rotate-180 text-brand-titanium' : ''}`} />
                         </button>
 
                         {/* Content (Expandable) */}
@@ -284,8 +284,8 @@ const Services: React.FC = () => {
                                             ))}
                                         </div>
 
-                                        <div className="flex items-center gap-2 p-3 rounded-lg bg-brand-neon/5 border border-brand-neon/10">
-                                             <CheckCircle2 size={14} className="text-brand-neon" />
+                                        <div className="flex items-center gap-2 p-3 rounded-lg bg-brand-titanium/5 border border-brand-titanium/10">
+                                             <CheckCircle2 size={14} className="text-brand-titanium" />
                                              <span className="text-xs text-white font-medium">{phase.outcome}</span>
                                         </div>
                                     </div>

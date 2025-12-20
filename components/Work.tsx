@@ -14,7 +14,7 @@ const AbstractFintechUI = () => (
         </div>
         <div className="flex gap-2">
             <div className="w-1/3 h-20 rounded-lg bg-white/5 border border-white/5" />
-            <div className="w-1/3 h-20 rounded-lg bg-brand-neon/20 border border-brand-neon/20" />
+            <div className="w-1/3 h-20 rounded-lg bg-brand-titanium/20 border border-brand-titanium/20" />
             <div className="w-1/3 h-20 rounded-lg bg-white/5 border border-white/5" />
         </div>
         <div className="flex-1 rounded-lg bg-white/5 border border-white/5 p-3 relative overflow-hidden">
@@ -26,7 +26,7 @@ const AbstractFintechUI = () => (
                         initial={{ height: 0 }}
                         whileInView={{ height: `${h}%` }}
                         transition={{ duration: 1, delay: i * 0.1 }}
-                        className="w-full bg-brand-neon rounded-t-sm"
+                        className="w-full bg-brand-titanium rounded-t-sm"
                     />
                 ))}
              </div>
@@ -53,7 +53,7 @@ const AbstractAIUI = () => (
                 initial={{ x: 20, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="w-3/4 ml-auto p-3 rounded-2xl rounded-tr-none bg-brand-neon text-black"
+                className="w-3/4 ml-auto p-3 rounded-2xl rounded-tr-none bg-brand-titanium text-black"
             >
                 <div className="w-full h-2 rounded-full bg-black/20 mb-2" />
                 <div className="w-1/2 h-2 rounded-full bg-black/20" />
@@ -62,7 +62,7 @@ const AbstractAIUI = () => (
         
         {/* Floating Input */}
         <div className="absolute bottom-4 left-4 right-4 h-10 rounded-full bg-white/10 border border-white/10 flex items-center px-3 gap-2">
-            <div className="w-4 h-4 rounded-full bg-brand-neon animate-pulse" />
+            <div className="w-4 h-4 rounded-full bg-brand-titanium animate-pulse" />
             <div className="w-20 h-1.5 rounded-full bg-white/20" />
         </div>
     </div>
@@ -115,7 +115,7 @@ const ProjectCard = ({ title, category, description, VisualComponent, size = "sm
         <div className="p-8 flex-1 flex flex-col justify-between relative z-10">
             <div>
                 <div className="flex justify-between items-start mb-4">
-                    <span className="text-xs font-mono text-brand-neon uppercase tracking-widest px-2 py-1 rounded-md bg-brand-neon/10 border border-brand-neon/20">
+                    <span className="text-xs font-mono text-brand-titanium uppercase tracking-widest px-2 py-1 rounded-md bg-brand-titanium/10 border border-brand-titanium/20">
                         {category}
                     </span>
                     <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors duration-300" size={20} />
@@ -144,8 +144,8 @@ const Work: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
              <div>
                 <div className="flex items-center gap-2 mb-4">
-                    <span className="w-2 h-2 rounded-full bg-brand-neon animate-pulse" />
-                    <span className="font-mono text-xs text-brand-neon uppercase tracking-widest">{t.work.eyebrow}</span>
+                    <span className="w-2 h-2 rounded-full bg-brand-titanium animate-pulse" />
+                    <span className="font-mono text-xs text-brand-titanium uppercase tracking-widest">{t.work.eyebrow}</span>
                 </div>
                 <h2 className="font-display font-semibold text-4xl md:text-6xl text-white tracking-tight">
                     {t.work.title_main} <br/> <span className="text-gray-600">{t.work.title_sub}</span>
@@ -197,7 +197,7 @@ const Work: React.FC = () => {
                     </span>
                </div>
                
-               <div className="relative overflow-hidden rounded-3xl bg-brand-neon p-8 flex flex-col justify-between group cursor-pointer">
+               <div className="relative overflow-hidden rounded-3xl bg-brand-titanium p-8 flex flex-col justify-between group cursor-pointer">
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-multiply" />
                     
                     <div className="relative z-10">

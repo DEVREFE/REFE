@@ -45,17 +45,17 @@ const ProblemSolution: React.FC = () => {
   return (
     <section className="py-32 relative overflow-hidden">
       
-      {/* Aurora Backgrounds */}
+      {/* Background Ambience - Neutral */}
       <div className="absolute top-1/2 left-[-10%] w-[500px] h-[500px] bg-red-900/10 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
-      <div className="absolute top-1/2 right-[-10%] w-[500px] h-[500px] bg-brand-neon/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
+      <div className="absolute top-1/2 right-[-10%] w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
             <div className="flex items-center gap-3 mb-6">
-                <span className="w-2 h-2 rounded-full bg-brand-neon animate-pulse" />
-                <span className="text-xs font-mono text-brand-neon uppercase tracking-widest">{t.problem.eyebrow}</span>
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                <span className="text-xs font-mono text-white uppercase tracking-widest">{t.problem.eyebrow}</span>
             </div>
             <h2 className="font-display font-semibold text-4xl md:text-5xl text-white tracking-tight leading-tight mb-6">
                 {t.problem.title_main} <br/> <span className="text-gray-600">{t.problem.title_sub}</span>
@@ -75,7 +75,7 @@ const ProblemSolution: React.FC = () => {
                         {activeScenario === key && (
                             <motion.div 
                                 layoutId="activeTab"
-                                className="absolute inset-0 bg-brand-neon rounded-full"
+                                className="absolute inset-0 bg-white rounded-full"
                                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                             />
                         )}
@@ -101,8 +101,6 @@ const ProblemSolution: React.FC = () => {
                 >
                     {/* PROBLEM SIDE */}
                     <div className="bg-[#1a0505]/80 backdrop-blur-sm border border-red-900/30 rounded-t-3xl md:rounded-3xl p-8 md:p-12 relative overflow-hidden group">
-                        {/* Background Noise */}
-                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay" />
                         
                         <div className="relative z-10">
                             <div className="flex items-center gap-3 mb-6 text-red-500">
@@ -134,33 +132,33 @@ const ProblemSolution: React.FC = () => {
                     </div>
 
                     {/* SOLUTION SIDE */}
-                    <div className="bg-[#051a05]/80 backdrop-blur-sm border border-brand-neon/20 rounded-b-3xl md:rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                    <div className="bg-[#050505]/90 backdrop-blur-sm border border-white/10 rounded-b-3xl md:rounded-3xl p-8 md:p-12 relative overflow-hidden">
                         {/* Subtle Grid */}
-                        <div className="absolute inset-0 bg-[linear-gradient(rgba(217,255,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(217,255,0,0.03)_1px,transparent_1px)] bg-[size:20px_20px]" />
+                        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]" />
                         
                         <div className="relative z-10">
-                            <div className="flex items-center gap-3 mb-6 text-brand-neon">
+                            <div className="flex items-center gap-3 mb-6 text-white">
                                 <CheckCircle2 size={20} />
                                 <span className="font-mono text-xs uppercase tracking-widest font-bold">{t.problem.sol_label}</span>
                             </div>
 
                             <h3 className="text-3xl font-display text-white mb-4">{scenarios[activeScenario].solution.title}</h3>
-                            <p className="text-gray-300 text-sm leading-relaxed mb-8 border-l-2 border-brand-neon/50 pl-4">
+                            <p className="text-gray-300 text-sm leading-relaxed mb-8 border-l-2 border-white/50 pl-4">
                                 {scenarios[activeScenario].solution.desc}
                             </p>
 
                             <ul className="space-y-3">
                                 {scenarios[activeScenario].solution.points.map((point: string, i: number) => (
                                     <li key={i} className="flex items-start gap-3 text-sm text-gray-300">
-                                        <div className="mt-0.5 text-brand-neon"><Zap size={12} fill="currentColor" /></div>
+                                        <div className="mt-0.5 text-white"><Zap size={12} fill="currentColor" /></div>
                                         {point}
                                     </li>
                                 ))}
                             </ul>
 
-                             <div className="mt-8 pt-6 border-t border-brand-neon/10 flex items-center gap-2">
-                                <Terminal size={14} className="text-brand-neon" />
-                                <span className="font-mono text-xs text-brand-neon/70">{t.problem.protocol}</span>
+                             <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2">
+                                <Terminal size={14} className="text-white" />
+                                <span className="font-mono text-xs text-white/70">{t.problem.protocol}</span>
                             </div>
                         </div>
                     </div>
