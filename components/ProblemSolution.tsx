@@ -6,170 +6,160 @@ import { useLanguage } from '../context/LanguageContext';
 type ScenarioType = 'startup' | 'enterprise';
 
 const ProblemSolution: React.FC = () => {
-  const [activeScenario, setActiveScenario] = useState<ScenarioType>('startup');
-  const { t } = useLanguage();
+    const [activeScenario, setActiveScenario] = useState<ScenarioType>('startup');
+    const { t } = useLanguage();
 
-  const scenarios = useMemo(() => ({
-    startup: {
-        id: 'startup',
-        label: t.problem.scenarios.startup.label,
-        icon: Activity,
-        pain: {
-            title: t.problem.scenarios.startup.pain.title,
-            desc: t.problem.scenarios.startup.pain.desc,
-            points: t.problem.scenarios.startup.pain.points
+    const scenarios = useMemo(() => ({
+        startup: {
+            id: 'startup',
+            label: t.problem.scenarios.startup.label,
+            icon: Activity,
+            pain: {
+                title: t.problem.scenarios.startup.pain.title,
+                desc: t.problem.scenarios.startup.pain.desc,
+                points: t.problem.scenarios.startup.pain.points
+            },
+            solution: {
+                title: t.problem.scenarios.startup.solution.title,
+                desc: t.problem.scenarios.startup.solution.desc,
+                points: t.problem.scenarios.startup.solution.points
+            }
         },
-        solution: {
-            title: t.problem.scenarios.startup.solution.title,
-            desc: t.problem.scenarios.startup.solution.desc,
-            points: t.problem.scenarios.startup.solution.points
+        enterprise: {
+            id: 'enterprise',
+            label: t.problem.scenarios.enterprise.label,
+            icon: ServerCrash,
+            pain: {
+                title: t.problem.scenarios.enterprise.pain.title,
+                desc: t.problem.scenarios.enterprise.pain.desc,
+                points: t.problem.scenarios.enterprise.pain.points
+            },
+            solution: {
+                title: t.problem.scenarios.enterprise.solution.title,
+                desc: t.problem.scenarios.enterprise.solution.desc,
+                points: t.problem.scenarios.enterprise.solution.points
+            }
         }
-    },
-    enterprise: {
-        id: 'enterprise',
-        label: t.problem.scenarios.enterprise.label,
-        icon: ServerCrash,
-        pain: {
-            title: t.problem.scenarios.enterprise.pain.title,
-            desc: t.problem.scenarios.enterprise.pain.desc,
-            points: t.problem.scenarios.enterprise.pain.points
-        },
-        solution: {
-            title: t.problem.scenarios.enterprise.solution.title,
-            desc: t.problem.scenarios.enterprise.solution.desc,
-            points: t.problem.scenarios.enterprise.solution.points
-        }
-    }
-  }), [t]);
+    }), [t]);
 
-  return (
-    <section className="py-32 relative overflow-hidden">
-      
-      {/* Background Ambience - Neutral */}
-      <div className="absolute top-1/2 left-[-10%] w-[500px] h-[500px] bg-red-900/10 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
-      <div className="absolute top-1/2 right-[-10%] w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
+    return (
+        <section id="problem" className="py-28 bg-refe-black relative overflow-hidden border-b border-white/[0.06]">
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-            <div className="flex items-center gap-3 mb-6">
-                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                <span className="text-xs font-mono text-white uppercase tracking-widest">{t.problem.eyebrow}</span>
-            </div>
-            <h2 className="font-display font-semibold text-4xl md:text-5xl text-white tracking-tight leading-tight mb-6">
-                {t.problem.title_main} <br/> <span className="text-gray-600">{t.problem.title_sub}</span>
-            </h2>
-            
-            {/* Context Switcher - Tabbed UI */}
-            <div className="flex p-1 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
-                {(Object.keys(scenarios) as ScenarioType[]).map((key) => (
-                    <button
-                        key={key}
-                        onClick={() => setActiveScenario(key)}
-                        className={`
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+                {/* Header */}
+                <div className="flex flex-col items-center text-center mb-16">
+                    <p className="refe-mono text-refe-muted mb-5 text-center">{t.problem.eyebrow}</p>
+                    <h2 className="refe-display text-4xl md:text-5xl text-refe-white leading-none mb-8 text-center">
+                        {t.problem.title_main}<br /><span className="text-refe-muted">{t.problem.title_sub}</span>
+                    </h2>
+
+                    {/* Context Switcher - Tabbed UI */}
+                    <div className="flex p-1 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
+                        {(Object.keys(scenarios) as ScenarioType[]).map((key) => (
+                            <button
+                                key={key}
+                                onClick={() => setActiveScenario(key)}
+                                className={`
                             relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2
                             ${activeScenario === key ? 'text-black' : 'text-gray-400 hover:text-white'}
                         `}
-                    >
-                        {activeScenario === key && (
-                            <motion.div 
-                                layoutId="activeTab"
-                                className="absolute inset-0 bg-white rounded-full"
-                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                            />
-                        )}
-                        <span className="relative z-10 flex items-center gap-2">
-                           {key === 'startup' ? <Activity size={14} /> : <ServerCrash size={14} />}
-                           {scenarios[key].label}
-                        </span>
-                    </button>
-                ))}
+                            >
+                                {activeScenario === key && (
+                                    <motion.div
+                                        layoutId="activeTab"
+                                        className="absolute inset-0 bg-white rounded-full"
+                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                    />
+                                )}
+                                <span className="relative z-10 flex items-center gap-2">
+                                    {key === 'startup' ? <Activity size={14} /> : <ServerCrash size={14} />}
+                                    {scenarios[key].label}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Dynamic Content Area */}
+                <div className="relative min-h-[400px]">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeScenario}
+                            initial={{ opacity: 0, y: 10, filter: 'blur(10px)' }}
+                            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                            exit={{ opacity: 0, y: -10, filter: 'blur(10px)' }}
+                            transition={{ duration: 0.4 }}
+                            className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 items-stretch"
+                        >
+                            {/* PROBLEM SIDE */}
+                            <div className="bg-refe-ink border border-white/[0.08] rounded-t-3xl md:rounded-3xl p-8 md:p-12 relative overflow-hidden group">
+                                <div className="relative z-10">
+                                    <div className="flex items-center gap-3 mb-6 text-refe-muted">
+                                        <AlertCircle size={18} />
+                                        <span className="refe-mono">{t.problem.diag_label}</span>
+                                    </div>
+
+                                    <h3 className="text-3xl refe-display text-refe-white mb-4">{scenarios[activeScenario].pain.title}</h3>
+                                    <p className="text-refe-mid text-sm leading-relaxed mb-8 border-l border-white/[0.15] pl-4">
+                                        {scenarios[activeScenario].pain.desc}
+                                    </p>
+
+                                    <ul className="space-y-3">
+                                        {scenarios[activeScenario].pain.points.map((point: string, i: number) => (
+                                            <li key={i} className="flex items-start gap-3 text-sm text-refe-mid">
+                                                <span className="mt-1.5 w-1 h-1 bg-refe-muted rounded-full" />
+                                                {point}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {/* CONNECTING ARROW (Desktop only) */}
+                            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                                <div className="w-12 h-12 bg-[#020202] border border-white/20 rounded-full flex items-center justify-center">
+                                    <ArrowRight size={20} className="text-white" />
+                                </div>
+                            </div>
+
+                            {/* SOLUTION SIDE */}
+                            <div className="bg-refe-black border border-white/[0.15] rounded-b-3xl md:rounded-3xl p-8 md:p-12 relative overflow-hidden">
+
+                                <div className="relative z-10">
+                                    <div className="flex items-center gap-3 mb-6 text-white">
+                                        <CheckCircle2 size={20} />
+                                        <span className="font-mono text-xs uppercase tracking-widest font-bold">{t.problem.sol_label}</span>
+                                    </div>
+
+                                    <h3 className="text-3xl font-display text-white mb-4">{scenarios[activeScenario].solution.title}</h3>
+                                    <p className="text-gray-300 text-sm leading-relaxed mb-8 border-l-2 border-white/50 pl-4">
+                                        {scenarios[activeScenario].solution.desc}
+                                    </p>
+
+                                    <ul className="space-y-3">
+                                        {scenarios[activeScenario].solution.points.map((point: string, i: number) => (
+                                            <li key={i} className="flex items-start gap-3 text-sm text-gray-300">
+                                                <div className="mt-0.5 text-white"><Zap size={12} fill="currentColor" /></div>
+                                                {point}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2">
+                                        <Terminal size={14} className="text-white" />
+                                        <span className="font-mono text-xs text-white/70">{t.problem.protocol}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+
             </div>
-        </div>
-
-        {/* Dynamic Content Area */}
-        <div className="relative min-h-[400px]">
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={activeScenario}
-                    initial={{ opacity: 0, y: 10, filter: 'blur(10px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    exit={{ opacity: 0, y: -10, filter: 'blur(10px)' }}
-                    transition={{ duration: 0.4 }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 items-stretch"
-                >
-                    {/* PROBLEM SIDE */}
-                    <div className="bg-[#1a0505]/80 backdrop-blur-sm border border-red-900/30 rounded-t-3xl md:rounded-3xl p-8 md:p-12 relative overflow-hidden group">
-                        
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-3 mb-6 text-red-500">
-                                <AlertCircle size={20} />
-                                <span className="font-mono text-xs uppercase tracking-widest font-bold">{t.problem.diag_label}</span>
-                            </div>
-
-                            <h3 className="text-3xl font-display text-white mb-4">{scenarios[activeScenario].pain.title}</h3>
-                            <p className="text-gray-400 text-sm leading-relaxed mb-8 border-l-2 border-red-900 pl-4">
-                                {scenarios[activeScenario].pain.desc}
-                            </p>
-
-                            <ul className="space-y-3">
-                                {scenarios[activeScenario].pain.points.map((point: string, i: number) => (
-                                    <li key={i} className="flex items-start gap-3 text-sm text-gray-500">
-                                        <span className="mt-1.5 w-1 h-1 bg-red-800 rounded-full" />
-                                        {point}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* CONNECTING ARROW (Desktop only) */}
-                    <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                        <div className="w-12 h-12 bg-[#020202] border border-white/20 rounded-full flex items-center justify-center">
-                            <ArrowRight size={20} className="text-white" />
-                        </div>
-                    </div>
-
-                    {/* SOLUTION SIDE */}
-                    <div className="bg-[#050505]/90 backdrop-blur-sm border border-white/10 rounded-b-3xl md:rounded-3xl p-8 md:p-12 relative overflow-hidden">
-                        {/* Subtle Grid */}
-                        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]" />
-                        
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-3 mb-6 text-white">
-                                <CheckCircle2 size={20} />
-                                <span className="font-mono text-xs uppercase tracking-widest font-bold">{t.problem.sol_label}</span>
-                            </div>
-
-                            <h3 className="text-3xl font-display text-white mb-4">{scenarios[activeScenario].solution.title}</h3>
-                            <p className="text-gray-300 text-sm leading-relaxed mb-8 border-l-2 border-white/50 pl-4">
-                                {scenarios[activeScenario].solution.desc}
-                            </p>
-
-                            <ul className="space-y-3">
-                                {scenarios[activeScenario].solution.points.map((point: string, i: number) => (
-                                    <li key={i} className="flex items-start gap-3 text-sm text-gray-300">
-                                        <div className="mt-0.5 text-white"><Zap size={12} fill="currentColor" /></div>
-                                        {point}
-                                    </li>
-                                ))}
-                            </ul>
-
-                             <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2">
-                                <Terminal size={14} className="text-white" />
-                                <span className="font-mono text-xs text-white/70">{t.problem.protocol}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </motion.div>
-            </AnimatePresence>
-        </div>
-        
-      </div>
-    </section>
-  );
+        </section>
+    );
 };
 
 export default ProblemSolution;

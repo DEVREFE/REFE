@@ -1,160 +1,192 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Activity, Code2, Rocket, ArrowRight } from 'lucide-react';
+import { ArrowDown, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import ReactMarkdown from 'react-markdown';
-
-// --- Micro-Components ---
-
-const StatusBadge = ({ text }: { text: string }) => (
-    <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-8 group cursor-default hover:border-white/20 transition-colors">
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-40"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-white/80"></span>
-        </span>
-        <span className="text-[11px] font-mono font-bold text-gray-300 uppercase tracking-widest group-hover:text-white transition-colors">
-            {text}
-        </span>
-    </div>
-);
-
-const ServiceModule = ({ icon: Icon, title, subtitle, index }: any) => (
-    <div className="flex-1 group relative p-8 border-r border-white/[0.06] last:border-r-0 hover:bg-white/[0.02] transition-all duration-500 cursor-pointer flex flex-col items-start justify-between min-h-[160px]">
-        
-        {/* Subtle Inner Glow */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/0 to-white/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-        
-        <div className="w-full flex justify-between items-start mb-4 relative z-10">
-            <div className="p-2.5 rounded-xl bg-white/[0.03] text-gray-500 border border-white/[0.05] group-hover:text-white group-hover:border-white/20 transition-all duration-300">
-                <Icon size={20} />
-            </div>
-            <span className="font-mono text-[10px] text-gray-700 group-hover:text-gray-500 transition-colors">0{index}</span>
-        </div>
-
-        <div className="relative z-10">
-             <h4 className="font-display font-bold text-white text-lg mb-1 tracking-tight group-hover:translate-x-1 transition-transform duration-300">{title}</h4>
-             <p className="text-xs font-mono text-gray-600 uppercase tracking-wide group-hover:text-gray-400 transition-colors">{subtitle}</p>
-        </div>
-
-        {/* Arrow Reveal - Sleeker */}
-        <div className="absolute bottom-8 right-8 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
-            <ArrowRight size={18} className="text-white" />
-        </div>
-    </div>
-);
 
 const Hero: React.FC = () => {
-  const { t } = useLanguage();
+    const { t } = useLanguage();
+    const [scrolled, setScrolled] = useState(false);
 
-  return (
-    <section id="hero" className="relative min-h-screen flex flex-col pt-32 pb-0 overflow-hidden">
-        
-        {/* Cinematic Lighting (More subtle, less neon) */}
-        <div className="absolute top-[-30%] left-[10%] w-[1200px] h-[1200px] bg-white/[0.03] blur-[150px] rounded-full animate-float pointer-events-none" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[900px] h-[900px] bg-blue-900/[0.05] blur-[180px] rounded-full animate-aurora pointer-events-none" />
+    // Track scroll to hide scroll indicator
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
-        {/* --- CENTRAL CONTENT --- */}
-        <div className="flex-1 flex flex-col items-center justify-center text-center px-6 relative z-10 max-w-5xl mx-auto mb-16">
-            
+    // Staggered text animation variants for cinematic "reveal"
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const wordVariants = {
+        hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+        visible: {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } // Very smooth, cinematic easing
+        }
+    };
+
+    const fadeUpVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    };
+
+    return (
+        <section
+            id="hero"
+            className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-refe-black"
+        >
+            {/* 1. DARK AURORA BACKGROUND (Cinematic Atmosphere) */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+                {/* Center base glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.02] blur-[140px] rounded-full" />
+
+                {/* Slow moving orb 1 */}
+                <motion.div
+                    animate={{
+                        x: ['-20%', '10%', '-20%'],
+                        y: ['-10%', '20%', '-10%'],
+                        scale: [1, 1.1, 1]
+                    }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-[10%] left-[20%] w-[600px] h-[600px] bg-refe-muted/10 blur-[120px] rounded-full mix-blend-screen"
+                />
+
+                {/* Slow moving orb 2 */}
+                <motion.div
+                    animate={{
+                        x: ['20%', '-10%', '20%'],
+                        y: ['20%', '-10%', '20%'],
+                        scale: [1, 1.2, 1]
+                    }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear", delay: 2 }}
+                    className="absolute bottom-[10%] right-[10%] w-[700px] h-[500px] bg-white/[0.015] blur-[150px] rounded-full mix-blend-screen"
+                />
+
+                {/* Grid overlay for texture binding */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.008)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.008)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_30%,transparent_100%)]" />
+            </div>
+
+            {/* 2. MAIN EDITORIAL CONTENT (Absolute Centralization & Order) */}
+            <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-[1200px] mx-auto w-full mt-10">
+
+                {/* Status Badge (Premium pill) */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
+                    animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                    transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex items-center gap-2 mb-10 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] backdrop-blur-md"
+                >
+                    <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-refe-light opacity-60" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-refe-white" />
+                    </span>
+                    <span className="refe-mono text-refe-light tracking-widest text-[10px] uppercase">
+                        {t.hero.status}
+                    </span>
+                </motion.div>
+
+                {/* Monumental Headline */}
+                <motion.h1
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="font-display font-black text-white leading-[0.9] tracking-[-0.04em] mb-12 flex flex-col items-center justify-center max-w-[1100px]"
+                >
+                    <div className="overflow-hidden pb-2">
+                        <motion.span variants={wordVariants} className="block" style={{ fontSize: 'clamp(3.5rem, 8vw, 8.5rem)' }}>
+                            {t.hero.title_start}
+                        </motion.span>
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-[clamp(1rem,2vw,2rem)] overflow-hidden pb-2">
+                        <motion.span variants={wordVariants} className="block text-white/50" style={{ fontSize: 'clamp(3.5rem, 8vw, 8.5rem)' }}>
+                            {t.hero.title_mid}
+                        </motion.span>
+                        <motion.span variants={wordVariants} className="block" style={{ fontSize: 'clamp(3.5rem, 8vw, 8.5rem)' }}>
+                            {t.hero.title_end}
+                        </motion.span>
+                    </div>
+                </motion.h1>
+
+                {/* Descriptor paragraph */}
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                    }}
+                    className="max-w-[600px] mb-14"
+                >
+                    <p className="text-refe-mid font-light text-base md:text-lg leading-relaxed">
+                        {t.hero.desc_short}
+                    </p>
+                </motion.div>
+
+                {/* CTAs (Glassmorphism & High Contrast) */}
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 1.4, ease: [0.16, 1, 0.3, 1] } }
+                    }}
+                    className="flex flex-col sm:flex-row items-center gap-4"
+                >
+                    {/* Primary Glass CTA */}
+                    <a
+                        href="#services"
+                        className="group relative overflow-hidden px-8 py-3.5 rounded-full bg-white text-refe-black font-semibold text-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.25)]"
+                    >
+                        <span className="relative z-10 flex items-center gap-2">
+                            {t.hero.cta_primary}
+                            <ArrowDown size={15} className="group-hover:translate-y-0.5 transition-transform" />
+                        </span>
+                    </a>
+
+                    {/* Secondary Ghost CTA */}
+                    <a
+                        href="#footer"
+                        className="group px-8 py-3.5 rounded-full border border-white/[0.1] bg-white/[0.02] backdrop-blur-md text-refe-light text-sm font-medium hover:bg-white/[0.06] hover:border-white/[0.2] transition-all duration-300 flex items-center gap-2"
+                    >
+                        {t.hero.cta_secondary}
+                        <Sparkles size={14} className="text-refe-muted group-hover:text-refe-white transition-colors" />
+                    </a>
+                </motion.div>
+            </div>
+
+            {/* 3. SCROLL INDICATOR (Clean Bottom Frame) */}
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-            >
-                <StatusBadge text={t.hero.status} />
-            </motion.div>
-
-            <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl leading-[0.85] text-white tracking-tighter mb-8 select-none">
-                <motion.span 
-                    className="block text-gray-300"
-                    initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                >
-                    {t.hero.title_start}
-                </motion.span>
-                <motion.span 
-                    className="block"
-                    initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                >
-                     {t.hero.title_mid}
-                </motion.span>
-                <motion.span 
-                    className="block text-shimmer-silver"
-                    initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                >
-                    {t.hero.title_end}
-                </motion.span>
-            </h1>
-
-            <motion.div 
+                className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 transition-opacity duration-500 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 1 }}
-                className="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-12 prose prose-invert prose-p:text-gray-400 prose-strong:text-white prose-strong:font-normal mix-blend-plus-lighter"
+                transition={{ delay: 2, duration: 1 }}
             >
-                <ReactMarkdown>{t.hero.desc}</ReactMarkdown>
+                <div className="w-[1px] h-12 bg-gradient-to-b from-white/20 to-transparent relative overflow-hidden">
+                    <motion.div
+                        className="absolute top-0 left-0 w-full h-1/2 bg-white/60"
+                        animate={{ y: ['-100%', '200%'] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                    />
+                </div>
             </motion.div>
 
-            <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="flex flex-col sm:flex-row items-center gap-6"
-            >
-                <a 
-                    href="#services"
-                    className="group relative bg-white text-black px-10 py-4 rounded-full font-bold text-sm hover:bg-gray-200 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] flex items-center gap-2"
-                >
-                    {t.hero.cta_primary}
-                    <ArrowDown size={16} className="group-hover:translate-y-1 transition-transform" />
-                </a>
-            </motion.div>
-
-        </div>
-
-        {/* --- THE SEPARATOR / SERVICES DOCK --- */}
-        <motion.div 
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full border-t border-white/[0.08] bg-[#050505]/60 backdrop-blur-2xl relative z-20"
-        >
-            <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/[0.08]">
-                
-                <ServiceModule 
-                    icon={Activity}
-                    title={t.services.items[0].title}
-                    subtitle={t.services.items[0].subtitle}
-                    index={1}
-                />
-                
-                <ServiceModule 
-                    icon={Code2}
-                    title={t.services.items[1].title}
-                    subtitle={t.services.items[1].subtitle}
-                    index={2}
-                />
-                
-                <ServiceModule 
-                    icon={Rocket}
-                    title={t.services.items[2].title}
-                    subtitle={t.services.items[2].subtitle}
-                    index={3}
-                />
-
-            </div>
-            
-            {/* Loading Bar - Silver */}
-            <div className="absolute bottom-0 left-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent w-full animate-shimmer opacity-50" />
-        </motion.div>
-
-    </section>
-  );
+            {/* Super minimal bottom glow line instead of harsh border */}
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.15] to-transparent" />
+        </section>
+    );
 };
 
 export default Hero;

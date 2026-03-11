@@ -1,93 +1,103 @@
 import React from 'react';
-import { ArrowUpRight, Copy, Mail, MessageSquare } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Copy, Mail } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Footer: React.FC = () => {
-  const { t } = useLanguage();
+    const { t } = useLanguage();
 
-  return (
-    <footer id="footer" className="bg-[#020202] pt-32 pb-12 px-6 relative overflow-hidden border-t border-white/5">
-      
-      {/* Background Ambience - Silver/White */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[100px] bg-white/5 blur-[80px]" />
+    const handleCopy = () => {
+        navigator.clipboard.writeText('hola@refe.studio');
+    };
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        
-        {/* Main CTA Area */}
-        <div className="flex flex-col items-center text-center mb-32">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">{t.footer.slots}</span>
-            </div>
+    return (
+        <footer id="footer" className="bg-refe-black pt-32 pb-12 px-6 relative overflow-hidden border-t border-white/[0.06]">
 
-            <h2 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl text-white tracking-tighter leading-none mb-12">
-                {t.footer.title} <br /> <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">{t.footer.title_highlight}</span>
-            </h2>
+            {/* Thin top accent line */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-            <div className="flex flex-col md:flex-row gap-6">
-                <a 
-                    href="mailto:hello@refe.studio" 
-                    className="group relative flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors duration-300 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(255,255,255,0.3)]"
-                >
-                    <Mail size={20} />
-                    <span>hello@refe.studio</span>
-                    <ArrowUpRight size={20} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </a>
-                
-                <button 
-                    className="group px-10 py-5 rounded-full border border-white/10 bg-white/5 text-white font-medium hover:bg-white/10 transition-colors flex items-center gap-3"
-                    onClick={() => {navigator.clipboard.writeText('hello@refe.studio')}}
-                >
-                    <Copy size={18} className="text-gray-400 group-hover:text-white" />
-                    <span>{t.footer.copy}</span>
-                </button>
-            </div>
-        </div>
+            <div className="relative z-10 max-w-7xl mx-auto">
 
-        {/* Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-white/5 pt-16 mb-24">
-            <div>
-                <h4 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-6">{t.footer.sitemap}</h4>
-                <ul className="space-y-4">
-                    <li><a href="#hero" className="text-gray-400 hover:text-white transition-colors">{t.nav.home}</a></li>
-                    <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">{t.nav.services}</a></li>
-                    <li><a href="#methodology" className="text-gray-400 hover:text-white transition-colors">{t.nav.methodology}</a></li>
-                    <li><a href="#performance" className="text-gray-400 hover:text-white transition-colors">Results</a></li>
-                </ul>
+                {/* CTA Area */}
+                <div className="flex flex-col items-center text-center mb-28">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] mb-10">
+                        <span className="w-1.5 h-1.5 rounded-full bg-refe-mid" />
+                        <span className="refe-mono text-refe-muted">{t.footer.slots}</span>
+                    </div>
+
+                    <h2 className="refe-display text-6xl md:text-8xl lg:text-[120px] text-refe-white leading-none mb-12">
+                        {t.footer.title}<br />
+                        <span className="text-refe-muted">{t.footer.title_highlight}</span>
+                    </h2>
+
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <a
+                            href="mailto:hola@refe.studio"
+                            className="group flex items-center gap-3 bg-refe-white text-refe-black px-8 py-4 rounded-full font-semibold text-base hover:bg-refe-light transition-colors duration-200 shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
+                        >
+                            <Mail size={18} />
+                            <span>hola@refe.studio</span>
+                            <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </a>
+
+                        <button
+                            className="group flex items-center gap-3 px-8 py-4 rounded-full border border-white/[0.1] text-refe-light font-medium hover:bg-white/[0.04] transition-colors"
+                            onClick={handleCopy}
+                        >
+                            <Copy size={16} className="text-refe-muted group-hover:text-refe-light transition-colors" />
+                            <span>{t.footer.copy}</span>
+                        </button>
+                    </div>
+                </div>
+
+                {/* Links Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-10 border-t border-white/[0.06] pt-14 mb-16">
+                    <div>
+                        <h4 className="refe-mono text-refe-muted mb-5">{t.footer.sitemap}</h4>
+                        <ul className="space-y-3">
+                            <li><a href="#hero" className="text-sm text-refe-mid hover:text-refe-light transition-colors">{t.nav.home}</a></li>
+                            <li><a href="#services" className="text-sm text-refe-mid hover:text-refe-light transition-colors">{t.nav.services}</a></li>
+                            <li><a href="#work" className="text-sm text-refe-mid hover:text-refe-light transition-colors">{t.nav.work}</a></li>
+                            <li><a href="#process" className="text-sm text-refe-mid hover:text-refe-light transition-colors">{t.nav.process}</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="refe-mono text-refe-muted mb-5">{t.footer.socials}</h4>
+                        <ul className="space-y-3">
+                            <li><a href="#" className="text-sm text-refe-mid hover:text-refe-light transition-colors">LinkedIn</a></li>
+                            <li><a href="#" className="text-sm text-refe-mid hover:text-refe-light transition-colors">Instagram</a></li>
+                            <li><a href="#" className="text-sm text-refe-mid hover:text-refe-light transition-colors">Twitter / X</a></li>
+                            <li><a href="#" className="text-sm text-refe-mid hover:text-refe-light transition-colors">Behance</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="refe-mono text-refe-muted mb-5">{t.footer.legal}</h4>
+                        <ul className="space-y-3">
+                            <li><a href="#" className="text-sm text-refe-mid hover:text-refe-light transition-colors">Privacidad</a></li>
+                            <li><a href="#" className="text-sm text-refe-mid hover:text-refe-light transition-colors">Términos</a></li>
+                        </ul>
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                        <h4 className="refe-mono text-refe-muted mb-5">{t.footer.office}</h4>
+                        <p className="text-sm text-refe-mid leading-relaxed whitespace-pre-line">
+                            {t.footer.office_loc}
+                        </p>
+                    </div>
+                </div>
+
+                {/* Bottom Bar */}
+                <div className="flex flex-col md:flex-row justify-between items-center border-t border-white/[0.06] pt-6 gap-3">
+                    <p className="refe-mono text-refe-muted normal-case tracking-normal font-mono text-[11px]">
+                        © {new Date().getFullYear()} REFE. {t.footer.rights}
+                    </p>
+                    <p className="refe-mono text-refe-muted normal-case tracking-normal font-mono text-[11px]">
+                        {t.footer.credits}
+                    </p>
+                </div>
+
             </div>
-            <div>
-                <h4 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-6">{t.footer.socials}</h4>
-                <ul className="space-y-4">
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Instagram</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter / X</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Dribbble</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-6">{t.footer.legal}</h4>
-                <ul className="space-y-4">
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-                </ul>
-            </div>
-             <div className="col-span-2 md:col-span-1">
-                <h4 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-6">{t.footer.office}</h4>
-                <p className="text-gray-400 leading-relaxed whitespace-pre-line">
-                    {t.footer.office_loc}
-                </p>
-            </div>
-        </div>
-      
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-600 uppercase tracking-widest border-t border-white/5 pt-8">
-            <p className="font-mono">© {new Date().getFullYear()} REFE Studio. {t.footer.rights}</p>
-            <p className="font-mono mt-2 md:mt-0">{t.footer.credits}</p>
-        </div>
-      </div>
-    </footer>
-  );
+        </footer>
+    );
 };
 
 export default Footer;

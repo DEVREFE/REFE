@@ -1,148 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REFE | Digital Product Studio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Space Grotesk', 'sans-serif'],
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REFE — Branding, Desarrollo & Go To Market</title>
+  <meta name="description"
+    content="REFE es una agencia de branding, desarrollo web y go-to-market para marcas que quieren existir de verdad en el mundo digital." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['DM Sans', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'monospace'],
+          },
+          colors: {
+            refe: {
+              black: '#080808',
+              ink: '#111111',
+              charcoal: '#1a1a1a',
+              muted: '#4A4A4A',
+              mid: '#8A8A8A',
+              light: '#D4D4D4',
+              white: '#F0F0F0',
+              paper: '#F2F1EF',
+              smoke: '#E6E5E2',
+              slate: '#1C1C1C',
+            }
+          },
+          animation: {
+            'scroll': 'scroll 50s linear infinite',
+            'scroll-reverse': 'scroll-reverse 50s linear infinite',
+            'fade-up': 'fadeUp 0.8s ease forwards',
+            'shimmer': 'shimmer 8s linear infinite',
+          },
+          keyframes: {
+            scroll: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' },
             },
-            colors: {
-              brand: {
-                black: '#000000',
-                charcoal: '#0A0A0A',
-                titanium: '#F4F4F5', // Renamed from neon to ensure cache bust
-                secondary: '#A1A1AA',
-              }
+            'scroll-reverse': {
+              '0%': { transform: 'translateX(-50%)' },
+              '100%': { transform: 'translateX(0)' },
             },
-            backgroundImage: {
-              'metal-gradient': "linear-gradient(135deg, #FFFFFF 0%, #A1A1AA 100%)",
+            fadeUp: {
+              '0%': { opacity: 0, transform: 'translateY(24px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
             },
-            animation: {
-              'scroll': 'scroll 40s linear infinite',
-              'scroll-reverse': 'scroll-reverse 40s linear infinite',
-              'float': 'float 10s ease-in-out infinite',
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'aurora': 'aurora 20s ease-in-out infinite alternate',
-              'shimmer': 'shimmer 8s linear infinite',
-            },
-            keyframes: {
-              scroll: {
-                '0%': { transform: 'translateX(0)' },
-                '100%': { transform: 'translateX(-50%)' },
-              },
-              'scroll-reverse': {
-                '0%': { transform: 'translateX(-50%)' },
-                '100%': { transform: 'translateX(0)' },
-              },
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              aurora: {
-                '0%': { opacity: 0.1, transform: 'scale(1)' },
-                '50%': { opacity: 0.2, transform: 'scale(1.1)' },
-                '100%': { opacity: 0.1, transform: 'scale(1)' }
-              },
-              shimmer: {
-                '0%': { backgroundPosition: '200% 0' },
-                '100%': { backgroundPosition: '-200% 0' }
-              }
+            shimmer: {
+              '0%': { backgroundPosition: '200% 0' },
+              '100%': { backgroundPosition: '-200% 0' }
             }
           }
         }
       }
-    </script>
-    <style>
-      body {
-        background-color: #000000;
-        color: #ffffff;
-        overflow-x: hidden;
-        cursor: none;
-      }
-      
-      /* SHARP SVG BACKGROUND - NO PIXELATION */
-      .bg-clean-grid {
-        position: fixed;
-        inset: 0;
-        z-index: -2;
-        opacity: 0.4;
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
-        -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
-      }
+    }
+  </script>
+  <style>
+    :root {
+      --refe-black: #080808;
+      --refe-ink: #111111;
+      --refe-border: rgba(255, 255, 255, 0.07);
+      --refe-muted: #4A4A4A;
+      --refe-mid: #8A8A8A;
+      --refe-light: #D4D4D4;
+      --refe-white: #F0F0F0;
+      /* Light surface tokens */
+      --refe-paper: #F2F1EF;
+      --refe-smoke: #E6E5E2;
+      --refe-slate: #1C1C1C;
+      /* Mouse spotlight */
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+    }
 
-      /* Custom Cursor */
-      .cursor-dot,
-      .cursor-outline {
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 9999;
-        pointer-events: none;
-        mix-blend-mode: difference;
-      }
-      .cursor-dot {
-        width: 6px;
-        height: 6px;
-        background-color: #ffffff;
-      }
-      .cursor-outline {
-        width: 40px;
-        height: 40px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        transition: width 0.2s, height 0.2s, background-color 0.2s;
-      }
-      
-      body:has(a:hover) .cursor-outline,
-      body:has(button:hover) .cursor-outline,
-      body:has(.group:hover) .cursor-outline {
-        width: 60px;
-        height: 60px;
-        border-color: rgba(255, 255, 255, 0.8);
-        background-color: rgba(255, 255, 255, 0.1);
-      }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-      /* Scrollbar */
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #000; }
-      ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-      
-      /* High-End Glass */
-      .glass-panel {
-        background: rgba(10, 10, 10, 0.6);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 0 0 1px rgba(0,0,0,1), 0 20px 40px rgba(0,0,0,0.4);
-      }
-      
-      /* Metallic Text Shimmer */
-      .text-shimmer-silver {
-        background: linear-gradient(
-          to right,
-          #71717a 20%,
-          #ffffff 50%,
-          #71717a 80%
-        );
-        background-size: 200% auto;
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-        animation: shimmer 6s linear infinite;
-      }
-    </style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--refe-black);
+      color: var(--refe-white);
+      overflow-x: hidden;
+      cursor: none;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* === GRAIN TEXTURE OVERLAY === */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 180px 180px;
+    }
+
+    /* === MOUSE SPOTLIGHT (Hero) === */
+    .hero-spotlight {
+      background-image:
+        radial-gradient(700px circle at var(--mouse-x) var(--mouse-y),
+          rgba(255, 255, 255, 0.04),
+          transparent 60%);
+    }
+
+    /* === CUSTOM CURSOR === */
+    .cursor-dot,
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .cursor-dot {
+      width: 5px;
+      height: 5px;
+      background-color: #F0F0F0;
+      transition: transform 0.15s ease;
+    }
+
+    .cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(240, 240, 240, 0.25);
+      transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+    }
+
+    body:has(a:hover) .cursor-ring,
+    body:has(button:hover) .cursor-ring {
+      width: 52px;
+      height: 52px;
+      border-color: rgba(240, 240, 240, 0.6);
+    }
+
+    body:has(a:hover) .cursor-dot,
+    body:has(button:hover) .cursor-dot {
+      transform: translate(-50%, -50%) scale(1.8);
+    }
+
+    /* === SCROLLBAR === */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--refe-black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #2a2a2a;
+      border-radius: 2px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3a3a3a;
+    }
+
+    /* === GLASS PANEL (neutral) === */
+    .glass {
+      background: rgba(14, 14, 14, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    /* === SECTION DIVIDER === */
+    .refe-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    /* === WORDMARK === */
+    .refe-wordmark {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    /* === DISPLAY HEADING === */
+    .refe-display {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.88;
+    }
+
+    /* === MONO LABEL === */
+    .refe-mono {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    /* === LIGHT SECTION HELPER === */
+    .refe-section-light {
+      background-color: var(--refe-paper);
+      color: var(--refe-slate);
+    }
+
+    /* === SELECTION === */
+    ::selection {
+      background-color: rgba(240, 240, 240, 0.15);
+      color: #F0F0F0;
+    }
+
+    /* === HORIZONTAL RULE === */
+    hr {
+      border-color: rgba(255, 255, 255, 0.07);
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -158,36 +250,36 @@
 }
 </script>
 </head>
-  <body>
-    <!-- Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-    <script>
-      const cursorDot = document.querySelector('.cursor-dot');
-      const cursorOutline = document.querySelector('.cursor-outline');
-      let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
 
-      window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursorDot.style.left = `${mouseX}px`;
-        cursorDot.style.top = `${mouseY}px`;
-      });
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <script>
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
 
-      function animateCursor() {
-        outlineX += (mouseX - outlineX) * 0.15;
-        outlineY += (mouseY - outlineY) * 0.15;
-        cursorOutline.style.left = `${outlineX}px`;
-        cursorOutline.style.top = `${outlineY}px`;
-        requestAnimationFrame(animateCursor);
-      }
-      animateCursor();
-    </script>
-    
-    <div class="bg-clean-grid"></div>
-    
-    <div id="root"></div>
-    <!-- CRITICAL FOR VERCEL/VITE: Script Entry Point -->
-    <script type="module" src="/index.tsx"></script>
-  </body>
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top = my + 'px';
+      // Drive mouse spotlight
+      document.documentElement.style.setProperty('--mouse-x', mx + 'px');
+      document.documentElement.style.setProperty('--mouse-y', my + 'px');
+    });
+
+    (function tick() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(tick);
+    })();
+  </script>
+
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
 </html>

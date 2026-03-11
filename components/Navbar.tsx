@@ -1,46 +1,13 @@
-import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useSpring, useMotionValue } from 'framer-motion';
-import { Menu, X, MessageSquare, Home, Layers, Zap, Briefcase, Globe } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { Menu, X, MessageSquare, Home, Layers, Briefcase, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-
-const MagneticWrapper = ({ children }: { children?: React.ReactNode }) => {
-    const ref = useRef<HTMLDivElement>(null);
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!ref.current) return;
-        const { left, top, width, height } = ref.current.getBoundingClientRect();
-        const centerX = left + width / 2;
-        const centerY = top + height / 2;
-        x.set((e.clientX - centerX) * 0.2); 
-        y.set((e.clientY - centerY) * 0.2);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
-    return (
-        <motion.div
-            ref={ref}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ x, y }}
-            transition={{ type: "spring", stiffness: 150, damping: 15 }}
-        >
-            {children}
-        </motion.div>
-    );
-};
-
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const { language, setLanguage, t } = useLanguage();
-  
+
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -48,143 +15,141 @@ const Navbar: React.FC = () => {
   });
 
   const navItems = [
-    { label: t.nav.home, href: '#hero', icon: Home },
     { label: t.nav.services, href: '#services', icon: Layers },
     { label: t.nav.work, href: '#work', icon: Briefcase },
-    { label: t.nav.methodology, href: '#methodology', icon: Zap },
+    { label: t.nav.process, href: '#process', icon: ChevronRight },
   ];
 
   return (
     <>
-      {/* Reading Progress Bar - White */}
+      {/* Reading Progress — thin white line */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-white z-[60] origin-left"
+        className="fixed top-0 left-0 right-0 h-[1px] bg-refe-white z-[70] origin-left"
         style={{ scaleX }}
       />
 
-      {/* Desktop Floating Dock */}
+      {/* ── Desktop Pill Nav ─────────────────────────────────── */}
       <motion.nav
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, type: 'spring', stiffness: 260, damping: 20 }}
-        className="fixed top-6 left-0 right-0 z-50 hidden md:flex justify-center pointer-events-none"
+        transition={{ delay: 0.4, type: 'spring', stiffness: 200, damping: 24 }}
+        className="fixed top-5 left-0 right-0 z-50 hidden md:flex justify-center pointer-events-none"
       >
-        <div className="pointer-events-auto bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 rounded-full px-2 py-2 flex items-center gap-1 shadow-2xl ring-1 ring-white/5">
-          
-          <a href="#" className="px-4 py-2 font-display font-bold text-white tracking-tight flex items-center gap-1 group">
-            REFE<span className="text-white group-hover:animate-pulse">.</span>
+        <div className="pointer-events-auto glass rounded-full px-2 py-1.5 flex items-center gap-0.5 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+
+          {/* Wordmark */}
+          <a
+            href="#hero"
+            className="refe-wordmark text-refe-white text-base px-4 py-2 hover:opacity-60 transition-opacity"
+          >
+            REFE
           </a>
 
-          <div className="h-6 w-[1px] bg-white/10 mx-2" />
+          <div className="h-5 w-px bg-white/[0.07] mx-1" />
 
-          <div className="flex items-center gap-1">
+          {/* Nav links */}
+          <div className="flex items-center">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="relative px-4 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all group flex items-center gap-2 overflow-hidden"
+                className="px-4 py-2 rounded-full text-sm font-medium text-refe-mid hover:text-refe-white hover:bg-white/[0.04] transition-all duration-200"
               >
-                <span className="relative z-10">{item.label}</span>
-                <span className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                {item.label}
               </a>
             ))}
           </div>
-          
-          <div className="h-6 w-[1px] bg-white/10 mx-2" />
+
+          <div className="h-5 w-px bg-white/[0.07] mx-1" />
 
           {/* Language Toggle */}
-          <button 
-            onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-            className="px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono font-bold hover:bg-white/10 transition-colors flex items-center gap-2 mr-2"
+          <button
+            onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+            className="px-3 py-1.5 rounded-full text-[10px] font-mono font-medium text-refe-mid hover:text-refe-white transition-colors tracking-widest mr-1"
           >
-             <span className={language === 'en' ? 'text-white' : 'text-gray-500'}>EN</span>
-             <span className="text-gray-600">/</span>
-             <span className={language === 'es' ? 'text-white' : 'text-gray-500'}>ES</span>
+            <span className={language === 'es' ? 'text-refe-white' : ''}>ES</span>
+            <span className="text-refe-muted mx-1">/</span>
+            <span className={language === 'en' ? 'text-refe-white' : ''}>EN</span>
           </button>
 
-          <MagneticWrapper>
-            <a
-                href="#footer"
-                className="relative overflow-hidden bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] group"
-            >
-                {/* Shine effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-black/10 to-transparent z-10" />
-                
-                <MessageSquare size={16} className="relative z-20" />
-                <span className="relative z-20">{t.nav.cta}</span>
-            </a>
-          </MagneticWrapper>
+          {/* CTA */}
+          <a
+            href="#footer"
+            className="bg-refe-white text-refe-black px-5 py-2 rounded-full text-sm font-semibold hover:bg-refe-light transition-colors duration-200 shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+          >
+            {t.nav.cta}
+          </a>
         </div>
       </motion.nav>
 
-      {/* Mobile Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 md:hidden bg-[#050505]/80 backdrop-blur-md border-b border-white/5 px-6 py-4 flex justify-between items-center">
-        <a href="#" className="font-display font-bold text-xl text-white">
-          REFE<span className="text-white">.</span>
+      {/* ── Mobile Bar ───────────────────────────────────────── */}
+      <nav className="fixed top-0 left-0 right-0 z-50 md:hidden bg-refe-black/90 backdrop-blur-md border-b border-white/[0.07] px-5 py-4 flex justify-between items-center">
+        <a href="#hero" className="refe-wordmark text-refe-white text-lg">
+          REFE
         </a>
-        <div className="flex items-center gap-4">
-            <button 
-                onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                className="font-mono text-xs font-bold text-gray-400"
-            >
-                {language.toUpperCase()}
-            </button>
-            <button
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+            className="font-mono text-[10px] font-medium text-refe-mid tracking-widest uppercase"
+          >
+            {language.toUpperCase()}
+          </button>
+          <button
             onClick={() => setMobileMenuOpen(true)}
-            className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white active:bg-white/20"
-            >
-            <Menu size={20} />
-            </button>
+            className="w-9 h-9 rounded-full border border-white/[0.1] flex items-center justify-center text-refe-light hover:bg-white/[0.05] transition-colors"
+          >
+            <Menu size={18} />
+          </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* ── Mobile Menu Overlay ──────────────────────────────── */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-[#050505] flex flex-col p-6"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'tween', duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[60] bg-refe-black flex flex-col p-6"
           >
-            <div className="flex justify-between items-center mb-8">
-               <span className="font-mono text-xs text-gray-500 uppercase tracking-widest">Menu</span>
-               <button
+            <div className="flex justify-between items-center mb-16">
+              <span className="refe-mono text-refe-muted">Menu</span>
+              <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white"
+                className="w-10 h-10 rounded-full border border-white/[0.1] flex items-center justify-center text-refe-light"
               >
-                <X size={24} />
+                <X size={18} />
               </button>
             </div>
-            
-            <div className="flex flex-col gap-6 mt-10">
+
+            <div className="flex flex-col gap-1">
               {navItems.map((item, idx) => (
                 <motion.a
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: idx * 0.1 }}
                   key={item.label}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.07 + 0.1 }}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="font-display text-5xl font-bold text-white flex items-center gap-4 active:text-gray-400"
+                  className="refe-display text-4xl text-refe-white py-3 border-b border-white/[0.05] flex items-center justify-between group"
                 >
-                  <item.icon size={32} className="text-white" />
-                  {item.label}
+                  <span>{item.label}</span>
+                  <ChevronRight size={24} className="text-refe-muted group-hover:text-refe-white transition-colors" />
                 </motion.a>
               ))}
-              
-               <motion.a
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                  href="#footer"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-display text-5xl font-bold text-white flex items-center gap-4 mt-4"
-                >
-                  <MessageSquare size={32} />
-                  {t.nav.cta}
-                </motion.a>
             </div>
+
+            <motion.a
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              href="#footer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-auto bg-refe-white text-refe-black px-8 py-4 rounded-full text-center font-semibold text-base"
+            >
+              {t.nav.cta}
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>
