@@ -18,14 +18,14 @@ const translations = {
             cta: 'Hablemos'
         },
         hero: {
-            status: 'Disponibles para nuevos proyectos',
-            title_start: 'CONSTRUIMOS',
-            title_mid: 'LO QUE',
-            title_end: 'IMPORTA.',
+            status: 'Elevá tu estándar digital',
+            title_start: 'POTENCIAMOS',
+            title_mid: 'TU',
+            title_end: 'MARCA.',
             desc: 'Somos una agencia de **branding**, **desarrollo web** y **go-to-market** con base en Buenos Aires. Hacemos que las marcas existan de verdad en el mundo digital.',
-            desc_short: 'Agencia de Branding, Desarrollo & Go To Market — Buenos Aires.',
+            desc_short: 'Branding, Desarrollo Web y Performance que marcan la diferencia.',
             cta_primary: 'Ver servicios',
-            cta_secondary: 'Hablemos',
+            cta_secondary: 'Iniciá un proyecto',
         },
         philosophy: {
             eyebrow: 'Nuestra forma de operar',
@@ -194,14 +194,14 @@ const translations = {
             cta: "Let's talk"
         },
         hero: {
-            status: 'Available for new projects',
-            title_start: 'WE BUILD',
-            title_mid: 'WHAT',
-            title_end: 'MATTERS.',
+            status: 'Elevate your digital standard',
+            title_start: 'WE EMPOWER',
+            title_mid: 'YOUR',
+            title_end: 'BRAND.',
             desc: 'We are a **branding**, **web development** and **go-to-market** agency based in Buenos Aires. We make brands truly exist in the digital world.',
-            desc_short: 'Branding, Development & Go To Market agency — Buenos Aires.',
+            desc_short: 'Branding, Web Development & Performance that make a difference.',
             cta_primary: 'See services',
-            cta_secondary: "Let's talk",
+            cta_secondary: "Start a project",
         },
         philosophy: {
             eyebrow: 'How we operate',

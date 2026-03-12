@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
@@ -6,6 +6,15 @@ import { useLanguage } from '../context/LanguageContext';
 const Hero: React.FC = () => {
     const { t } = useLanguage();
     const [scrolled, setScrolled] = useState(false);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHovering, setIsHovering] = useState(false);
+    const heroRef = useRef<HTMLElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!heroRef.current) return;
+        const { left, top } = heroRef.current.getBoundingClientRect();
+        setMousePosition({ x: e.clientX - left, y: e.clientY - top });
+    };
 
     // Track scroll to hide scroll indicator
     useEffect(() => {
@@ -34,7 +43,7 @@ const Hero: React.FC = () => {
             opacity: 1,
             y: 0,
             filter: 'blur(0px)',
-            transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } // Very smooth, cinematic easing
+            transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } // Very smooth, cinematic easing
         }
     };
 
@@ -46,6 +55,10 @@ const Hero: React.FC = () => {
     return (
         <section
             id="hero"
+            ref={heroRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
             className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-refe-black"
         >
             {/* 1. DARK AURORA BACKGROUND (Cinematic Atmosphere) */}
@@ -77,6 +90,15 @@ const Hero: React.FC = () => {
 
                 {/* Grid overlay for texture binding */}
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.008)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.008)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_30%,transparent_100%)]" />
+
+                {/* Spotlight Cursor Effect */}
+                <div
+                    className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-700 ease-out"
+                    style={{
+                        opacity: isHovering ? 1 : 0,
+                        background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.06), transparent 40%)`
+                    }}
+                />
             </div>
 
             {/* 2. MAIN EDITORIAL CONTENT (Absolute Centralization & Order) */}
@@ -110,11 +132,11 @@ const Hero: React.FC = () => {
                             {t.hero.title_start}
                         </motion.span>
                     </div>
-                    <div className="flex flex-wrap justify-center gap-[clamp(1rem,2vw,2rem)] overflow-hidden pb-2">
+                    <div className="flex flex-wrap justify-center gap-[clamp(1rem,2vw,2rem)] overflow-hidden pb-4">
                         <motion.span variants={wordVariants} className="block text-white/50" style={{ fontSize: 'clamp(3.5rem, 8vw, 8.5rem)' }}>
                             {t.hero.title_mid}
                         </motion.span>
-                        <motion.span variants={wordVariants} className="block" style={{ fontSize: 'clamp(3.5rem, 8vw, 8.5rem)' }}>
+                        <motion.span variants={wordVariants} className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-refe-light to-white/50" style={{ fontSize: 'clamp(3.5rem, 8vw, 8.5rem)' }}>
                             {t.hero.title_end}
                         </motion.span>
                     </div>
@@ -148,7 +170,7 @@ const Hero: React.FC = () => {
                     {/* Primary Glass CTA */}
                     <a
                         href="#services"
-                        className="group relative overflow-hidden px-8 py-3.5 rounded-full bg-white text-refe-black font-semibold text-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.25)]"
+                        className="group relative overflow-hidden px-8 py-3.5 rounded-full bg-white text-refe-black font-semibold text-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]"
                     >
                         <span className="relative z-10 flex items-center gap-2">
                             {t.hero.cta_primary}
@@ -159,7 +181,7 @@ const Hero: React.FC = () => {
                     {/* Secondary Ghost CTA */}
                     <a
                         href="#footer"
-                        className="group px-8 py-3.5 rounded-full border border-white/[0.1] bg-white/[0.02] backdrop-blur-md text-refe-light text-sm font-medium hover:bg-white/[0.06] hover:border-white/[0.2] transition-all duration-300 flex items-center gap-2"
+                        className="group px-8 py-3.5 rounded-full border border-white/[0.15] bg-white/[0.03] backdrop-blur-md text-white text-sm font-medium hover:bg-white/[0.08] hover:border-white/[0.3] transition-all duration-300 flex items-center gap-2"
                     >
                         {t.hero.cta_secondary}
                         <Sparkles size={14} className="text-refe-muted group-hover:text-refe-white transition-colors" />
