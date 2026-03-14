@@ -75,7 +75,7 @@ const Navbar: React.FC = () => {
           {/* CTA */}
           <a
             href="#footer"
-            className="bg-refe-white text-refe-black px-5 py-2 rounded-full text-sm font-semibold hover:bg-refe-light transition-colors duration-200 shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+            className="bg-refe-accent text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-refe-accent-dark transition-colors duration-200 shadow-[0_2px_8px_rgba(232,87,42,0.3)]"
           >
             {t.nav.cta}
           </a>
@@ -146,7 +146,7 @@ const Navbar: React.FC = () => {
               transition={{ delay: 0.35 }}
               href="#footer"
               onClick={() => setMobileMenuOpen(false)}
-              className="mt-auto bg-refe-white text-refe-black px-8 py-4 rounded-full text-center font-semibold text-base"
+              className="mt-auto bg-refe-accent text-white px-8 py-4 rounded-full text-center font-semibold text-base hover:bg-refe-accent-dark transition-colors"
             >
               {t.nav.cta}
             </motion.a>

@@ -43,13 +43,13 @@ const Process: React.FC = () => {
     ], [t]);
 
     return (
-        <section id="process" className="refe-section-light py-28 relative border-b border-refe-smoke">
+        <section id="process" className="refe-section-light py-28 relative section-transition-dark-to-light">
 
             <div className="max-w-6xl mx-auto px-6 relative z-10">
 
                 <div className="text-center mb-20">
-                    <p className="refe-mono text-refe-muted mb-4 text-center block">{t.process.eyebrow}</p>
-                    <h2 className="refe-display text-4xl md:text-5xl text-refe-slate text-center">
+                    <p className="refe-mono text-refe-accent mb-4 text-center block">{t.process.eyebrow}</p>
+                    <h2 className="refe-serif text-4xl md:text-5xl text-refe-slate text-center italic">
                         {t.process.title_main} <span className="text-refe-muted">{t.process.title_sub}</span>
                     </h2>
                 </div>
@@ -81,7 +81,7 @@ const Process: React.FC = () => {
                                         <div className="w-24 h-24 rounded-2xl bg-refe-paper border border-refe-smoke text-refe-slate flex items-center justify-center mb-8 shadow-sm">
                                             {React.createElement(steps[activeStep].icon, { size: 36, strokeWidth: 1.5 })}
                                         </div>
-                                        <h3 className="text-3xl refe-display text-refe-slate mb-3">{steps[activeStep].title}</h3>
+                                        <h3 className="text-3xl refe-serif text-refe-slate mb-3 italic">{steps[activeStep].title}</h3>
                                         <p className="text-refe-muted text-sm leading-relaxed max-w-sm mb-8">{steps[activeStep].desc}</p>
 
                                         <div className="flex flex-wrap justify-center gap-2">
@@ -112,13 +112,13 @@ const Process: React.FC = () => {
                                 <div
                                     className={`absolute left-[21px] top-10 w-3 h-3 rounded-full border z-10 transition-colors duration-300 flex items-center justify-center
                                         ${idx === activeStep
-                                            ? 'bg-refe-slate border-refe-slate shadow-[0_0_0_4px_rgba(28,28,28,0.1)]'
+                                            ? 'bg-refe-accent border-refe-accent shadow-[0_0_0_4px_rgba(232,87,42,0.15)]'
                                             : 'bg-white border-refe-smoke'}`}
                                 />
 
                                 <div className="flex flex-col">
                                     <span className="refe-mono text-refe-muted mb-1">{step.id}</span>
-                                    <h3 className="text-2xl refe-display text-refe-slate mb-1">{step.title}</h3>
+                                    <h3 className="text-2xl refe-serif text-refe-slate mb-1 italic">{step.title}</h3>
                                     <p className="text-sm text-refe-muted mb-4">{step.subtitle}</p>
 
                                     <div className={`lg:hidden overflow-hidden transition-all duration-300 ${idx === activeStep ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>

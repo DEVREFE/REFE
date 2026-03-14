@@ -18,14 +18,13 @@ const translations = {
             cta: 'Hablemos'
         },
         hero: {
-            status: 'Elevá tu estándar digital',
-            title_start: 'POTENCIAMOS',
-            title_mid: 'TU',
-            title_end: 'MARCA.',
+            status: 'Buenos Aires — Remoto',
+            title_line1: 'Hacemos marcas',
+            title_line2: 'que importan.',
             desc: 'Somos una agencia de **branding**, **desarrollo web** y **go-to-market** con base en Buenos Aires. Hacemos que las marcas existan de verdad en el mundo digital.',
-            desc_short: 'Branding, Desarrollo Web y Performance que marcan la diferencia.',
-            cta_primary: 'Ver servicios',
-            cta_secondary: 'Iniciá un proyecto',
+            desc_short: 'Branding, desarrollo web y go-to-market para marcas que quieren existir de verdad.',
+            cta_primary: 'Ver proyectos',
+            cta_secondary: 'Hablemos',
         },
         philosophy: {
             eyebrow: 'Nuestra forma de operar',
@@ -91,10 +90,11 @@ const translations = {
             eyebrow: 'Proyectos',
             title_main: 'Trabajo',
             title_sub: 'selecto.',
-            desc: 'Algunos de los proyectos que pusimos en marcha.',
-            view_case: 'Ver caso',
+            desc: 'Algunos de los proyectos que estamos desarrollando.',
+            view_case: 'Ver proyecto',
             view_all: 'Ver todos los proyectos',
             archive: 'Archivo 2023–24',
+            scroll_hint: 'Seguí scrolleando para ver más',
             stealth: {
                 title: 'Proyectos bajo NDA',
                 desc: 'Actualmente trabajando en proyectos de banca digital y retail bajo acuerdos de confidencialidad.',
@@ -182,7 +182,8 @@ const translations = {
             office: 'Dónde estamos',
             office_loc: 'Buenos Aires, Argentina\nRemoto a todo el mundo',
             rights: 'Todos los sistemas operativos.',
-            credits: 'Diseñado y desarrollado por REFE.'
+            credits: 'Diseñado y desarrollado por REFE.',
+            marquee_text: 'Trabajemos juntos'
         }
     },
     en: {
@@ -194,14 +195,13 @@ const translations = {
             cta: "Let's talk"
         },
         hero: {
-            status: 'Elevate your digital standard',
-            title_start: 'WE EMPOWER',
-            title_mid: 'YOUR',
-            title_end: 'BRAND.',
+            status: 'Buenos Aires — Remote',
+            title_line1: 'We make brands',
+            title_line2: 'that matter.',
             desc: 'We are a **branding**, **web development** and **go-to-market** agency based in Buenos Aires. We make brands truly exist in the digital world.',
-            desc_short: 'Branding, Web Development & Performance that make a difference.',
-            cta_primary: 'See services',
-            cta_secondary: "Start a project",
+            desc_short: 'Branding, web development and go-to-market for brands that want to truly exist.',
+            cta_primary: 'See projects',
+            cta_secondary: "Let's talk",
         },
         philosophy: {
             eyebrow: 'How we operate',
@@ -267,10 +267,11 @@ const translations = {
             eyebrow: 'Projects',
             title_main: 'Selected',
             title_sub: 'work.',
-            desc: 'Some of the projects we have set in motion.',
-            view_case: 'View case',
+            desc: 'Some of the projects we are developing.',
+            view_case: 'View project',
             view_all: 'View all projects',
             archive: 'Archive 2023–24',
+            scroll_hint: 'Keep scrolling to see more',
             stealth: {
                 title: 'Projects under NDA',
                 desc: 'Currently working on digital banking and retail projects under confidentiality agreements.',
@@ -358,7 +359,8 @@ const translations = {
             office: 'Where we are',
             office_loc: 'Buenos Aires, Argentina\nRemote worldwide',
             rights: 'All systems operational.',
-            credits: 'Designed and developed by REFE.'
+            credits: 'Designed and developed by REFE.',
+            marquee_text: "Let's work together"
         }
     }
 };

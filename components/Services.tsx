@@ -70,7 +70,7 @@ const Services: React.FC = () => {
     }, [isPaused, ecosystem.length]);
 
     return (
-        <section id="services" className="refe-section-light py-24 md:py-32 relative overflow-hidden border-b border-refe-smoke">
+        <section id="services" className="refe-section-light py-24 md:py-32 relative overflow-hidden section-transition-dark-to-light">
 
             {/* Faint horizontal rule top */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-refe-smoke to-transparent" />
@@ -80,14 +80,14 @@ const Services: React.FC = () => {
                 {/* Header */}
                 <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div>
-                        <p className="refe-mono text-refe-muted mb-5">{t.services.eyebrow}</p>
-                        <h2 className="refe-display text-5xl md:text-7xl text-refe-slate leading-none">
+                        <p className="refe-mono text-refe-accent mb-5">{t.services.eyebrow}</p>
+                        <h2 className="refe-serif text-5xl md:text-7xl text-refe-slate leading-none italic">
                             {t.services.title_main}<br />
                             <span className="text-refe-muted">{t.services.title_sub}</span>
                         </h2>
                     </div>
                     <div className="hidden md:flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-refe-slate animate-pulse" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-refe-accent animate-pulse" />
                         <span className="refe-mono text-refe-slate">{t.services.status}</span>
                     </div>
                 </div>
@@ -125,13 +125,13 @@ const Services: React.FC = () => {
                                     )}
 
                                     <div className="flex items-center justify-between mb-3">
-                                        <span className={`refe-mono transition-colors ${isActive ? 'text-refe-slate' : 'text-refe-muted'}`}>
+                                        <span className={`refe-mono transition-colors ${isActive ? 'text-refe-accent' : 'text-refe-muted'}`}>
                                             {String(idx + 1).padStart(2, '0')}
                                         </span>
                                         <phase.icon size={18} className={`transition-colors ${isActive ? 'text-refe-slate' : 'text-refe-muted'}`} />
                                     </div>
 
-                                    <h3 className={`refe-display text-2xl transition-colors ${isActive ? 'text-refe-slate' : 'text-refe-muted group-hover:text-refe-slate'}`}>
+                                    <h3 className={`refe-serif text-2xl italic transition-colors ${isActive ? 'text-refe-slate' : 'text-refe-muted group-hover:text-refe-slate'}`}>
                                         {phase.title}
                                     </h3>
                                     <p className="refe-mono text-refe-muted mt-2 normal-case tracking-normal font-mono text-[11px]">{phase.subtitle}</p>
